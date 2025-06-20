@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "../scripts/gsap-animations.js";
 ---
 
 <html lang="es">
@@ -15,7 +16,6 @@ import "../styles/global.css";
   <body>
     <div id="cursor-glow"></div>
     <slot />
-    <script src="/scripts/gsap-animations.js" type="module"></script>
   </body>
   <script is:inline>
     const cursor = document.getElementById("cursor-glow");
