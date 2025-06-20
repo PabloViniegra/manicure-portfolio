@@ -3,77 +3,79 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-requestAnimationFrame(() => {
+document.addEventListener("DOMContentLoaded", () => {
   const sparkleContainer = document.querySelector(".sparkle-container");
   const targetRef = document.querySelector(".hero-logo");
 
   if (sparkleContainer && targetRef) {
-    const sparkleColors = ["#FE8BBB", "#9E7AFF"];
-    const sparkleCount = 12;
-    const rect = targetRef.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
+    requestAnimationFrame(() => {
+      const rect = targetRef.getBoundingClientRect();
+      const width = rect.width || targetRef.offsetWidth;
+      const height = rect.height || targetRef.offsetHeight;
 
-    sparkleContainer.style.width = `${width}px`;
-    sparkleContainer.style.height = `${height}px`;
+      sparkleContainer.style.width = `${width}px`;
+      sparkleContainer.style.height = `${height}px`;
+      sparkleContainer.style.position = "absolute";
+      sparkleContainer.style.top = "0";
+      sparkleContainer.style.left = "0";
+      sparkleContainer.style.pointerEvents = "none";
 
-    sparkleContainer.style.position = "absolute";
-    sparkleContainer.style.top = "0";
-    sparkleContainer.style.left = "0";
-    sparkleContainer.style.pointerEvents = "none";
+      const sparkleColors = ["#FE8BBB", "#9E7AFF"];
+      const sparkleCount = 12;
 
-    for (let i = 0; i < sparkleCount; i++) {
-      const sparkle = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "svg"
-      );
-      sparkle.setAttribute("viewBox", "0 0 21 21");
-      sparkle.setAttribute("width", "16");
-      sparkle.setAttribute("height", "16");
-      sparkle.style.position = "absolute";
+      for (let i = 0; i < sparkleCount; i++) {
+        const sparkle = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        sparkle.setAttribute("viewBox", "0 0 21 21");
+        sparkle.setAttribute("width", "16");
+        sparkle.setAttribute("height", "16");
+        sparkle.style.position = "absolute";
 
-      const path = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "path"
-      );
-      path.setAttribute(
-        "d",
-        "M9.82531 0.843845C10.0553 0.215178 10.9446 0.215178 11.1746 0.843845L11.8618 2.72026C12.4006 4.19229 12.3916 6.39157 13.5 7.5C14.6084 8.60843 16.8077 8.59935 18.2797 9.13822L20.1561 9.82534C20.7858 10.0553 20.7858 10.9447 20.1561 11.1747L18.2797 11.8618C16.8077 12.4007 14.6084 12.3916 13.5 13.5C12.3916 14.6084 12.4006 16.8077 11.8618 18.2798L11.1746 20.1562C10.9446 20.7858 10.0553 20.7858 9.82531 20.1562L9.13819 18.2798C8.59932 16.8077 8.60843 14.6084 7.5 13.5C6.39157 12.3916 4.19225 12.4007 2.72023 11.8618L0.843814 11.1747C0.215148 10.9447 0.215148 10.0553 0.843814 9.82534L2.72023 9.13822C4.19225 8.59935 6.39157 8.60843 7.5 7.5C8.60843 6.39157 8.59932 4.19229 9.13819 2.72026L9.82531 0.843845Z"
-      );
-      path.setAttribute(
-        "fill",
-        sparkleColors[Math.floor(Math.random() * sparkleColors.length)]
-      );
-      sparkle.appendChild(path);
-      sparkleContainer.appendChild(sparkle);
+        const path = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "path"
+        );
+        path.setAttribute(
+          "d",
+          "M9.82531 0.843845C10.0553 0.215178 10.9446 0.215178 11.1746 0.843845L11.8618 2.72026C12.4006 4.19229 12.3916 6.39157 13.5 7.5C14.6084 8.60843 16.8077 8.59935 18.2797 9.13822L20.1561 9.82534C20.7858 10.0553 20.7858 10.9447 20.1561 11.1747L18.2797 11.8618C16.8077 12.4007 14.6084 12.3916 13.5 13.5C12.3916 14.6084 12.4006 16.8077 11.8618 18.2798L11.1746 20.1562C10.9446 20.7858 10.0553 20.7858 9.82531 20.1562L9.13819 18.2798C8.59932 16.8077 8.60843 14.6084 7.5 13.5C6.39157 12.3916 4.19225 12.4007 2.72023 11.8618L0.843814 11.1747C0.215148 10.9447 0.215148 10.0553 0.843814 9.82534L2.72023 9.13822C4.19225 8.59935 6.39157 8.60843 7.5 7.5C8.60843 6.39157 8.59932 4.19229 9.13819 2.72026L9.82531 0.843845Z"
+        );
+        path.setAttribute(
+          "fill",
+          sparkleColors[Math.floor(Math.random() * sparkleColors.length)]
+        );
+        sparkle.appendChild(path);
+        sparkleContainer.appendChild(sparkle);
 
-      const x = Math.random() * width;
-      const y = Math.random() * height;
+        const x = Math.random() * width;
+        const y = Math.random() * height;
 
-      gsap.set(sparkle, {
-        x: x,
-        y: y,
-        opacity: 0,
-        scale: 0,
-        rotate: gsap.utils.random(60, 150),
-      });
+        gsap.set(sparkle, {
+          x: x,
+          y: y,
+          opacity: 0,
+          scale: 0,
+          rotate: gsap.utils.random(60, 150),
+        });
 
-      gsap.to(sparkle, {
-        opacity: 1,
-        scale: gsap.utils.random(0.5, 1),
-        rotate: "+=60",
-        duration: 0.8,
-        ease: "power2.out",
-        repeat: -1,
-        yoyo: true,
-        delay: Math.random() * 2,
-        onRepeat: () => {
-          const newX = Math.random() * width;
-          const newY = Math.random() * height;
-          gsap.set(sparkle, { x: newX, y: newY });
-        },
-      });
-    }
+        gsap.to(sparkle, {
+          opacity: 1,
+          scale: gsap.utils.random(0.5, 1),
+          rotate: "+=60",
+          duration: 0.8,
+          ease: "power2.out",
+          repeat: -1,
+          yoyo: true,
+          delay: Math.random() * 2,
+          onRepeat: () => {
+            const newX = Math.random() * width;
+            const newY = Math.random() * height;
+            gsap.set(sparkle, { x: newX, y: newY });
+          },
+        });
+      }
+    });
   }
 
   const logo = document.querySelector(".hero-logo");
@@ -94,22 +96,6 @@ requestAnimationFrame(() => {
       ease: "sine.inOut",
       repeat: -1,
       yoyo: true,
-    });
-  }
-  const heroTitle = document.querySelector(".hero-title");
-  if (heroTitle) {
-    const letters = gsap.utils.toArray(heroTitle.querySelectorAll("span"));
-
-    gsap.to(letters, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      stagger: 0.03,
-      ease: "power3.out",
-      from: {
-        y: 30,
-        opacity: 0,
-      },
     });
   }
 
