@@ -3,7 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-window.addEventListener("load", () => {
+requestAnimationFrame(() => {
   const sparkleContainer = document.querySelector(".sparkle-container");
   const targetRef = document.querySelector(".hero-logo");
 
