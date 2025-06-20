@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #e1bfbf;
+  --color-accent: #b08484;
+  --color-dark: #2d2d2d;
+
+  --font-sans-serif: "DM Sans Variable", sans-serif;
+  --font-sans: "Lato", sans-serif;
+  --font-display: "Fredoka One", system-ui;
+  --font-mono: "Ubuntu Mono", monospace;
+  --font-cursive: "Kaushan Script", cursive;
+}
+
+body {
+  @apply font-sans bg-white text-dark;
+}
+
+.glam-glow {
+  animation: float-glow 5s ease-in-out infinite;
+  filter: brightness(1.15) contrast(1.1);
+}
+
+@keyframes float-glow {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    filter: brightness(1.15) contrast(1.1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.03);
+    filter: brightness(1.25) contrast(1.2);
+  }
+}
+
+#cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #f0f, #0ff, #f0f);
+  opacity: 0.6;
+  filter: blur(10px);
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  mix-blend-mode: screen;
+  transition: background 0.3s ease;
+}
+
+.glam-button {
+  background: linear-gradient(90deg, #f472b6, #d946ef, #fb7185);
+  background-size: 200% 200%;
+  animation: pulse-glam 6s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glam-button:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 25px rgba(255, 192, 203, 0.6);
+}
+
+@keyframes pulse-glam {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    left: -50%;
+    opacity: 0;
+  }
+  50% {
+    left: 100%;
+    opacity: 1;
+  }
+  100% {
+    left: 150%;
+    opacity: 0;
+  }
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}

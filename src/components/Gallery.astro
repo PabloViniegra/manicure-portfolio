@@ -1,0 +1,115 @@
+---
+const images = Array.from({ length: 6 }, (_, i) => ({
+  src: `/images/nail-${i + 1}.jpg`,
+  alt: `Trabajo de manicura ${i + 1}`,
+}));
+---
+
+<section
+  class="gallery relative py-20 px-4 md:px-10 bg-gradient-to-br from-pink-50 via-white to-fuchsia-100 fade-in overflow-hidden"
+  id="gallery"
+>
+  <div class="flex justify-center">
+    <h2
+      class="text-4xl md:text-5xl font-extrabold font-display text-center mb-12 text-primary drop-shadow-lg relative inline-block after:content-[''] after:block after:w-1/2 after:h-1 after:bg-pink-400 after:mx-auto after:rounded-full after:mt-3"
+    >
+      Galería de Trabajos
+    </h2>
+  </div>
+
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
+    id="gallery-grid"
+  >
+    {
+      images.map((img, index) => (
+        <button
+          type="button"
+          class="bg-white rounded-2xl shadow-xl border border-pink-100 overflow-hidden transform hover:scale-105 hover:shadow-2xl transition-all duration-300 group focus:outline-none"
+          data-index={index}
+        >
+          <img
+            src={img.src}
+            alt={img.alt}
+            class="w-full h-64 object-cover group-hover:brightness-110 group-hover:contrast-125 transition-all duration-300"
+            loading="lazy"
+          />
+        </button>
+      ))
+    }
+  </div>
+  <div
+    id="gallery-modal"
+    class="fixed inset-0 bg-black/70 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
+  >
+    <div class="relative max-w-3xl w-full mx-4">
+      <button
+        class="absolute top-2 right-2 text-white text-3xl font-bold z-10 hover:scale-110 transition"
+        aria-label="Cerrar"
+        id="close-modal"
+      >
+        ×
+      </button>
+      <img
+        id="modal-image"
+        src=""
+        alt=""
+        class="rounded-xl shadow-2xl w-full max-h-[80vh] object-contain transition-transform duration-500"
+      />
+    </div>
+  </div>
+  <div
+    class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-pink-200 to-transparent pointer-events-none"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 right-0 w-full h-32 bg-gradient-to-t from-fuchsia-200 to-transparent pointer-events-none"
+  >
+  </div>
+</section>
+<script is:inline>
+  const images = [
+    { src: "/images/nail-1.jpg", alt: "Trabajo de manicura 1" },
+    { src: "/images/nail-2.jpg", alt: "Trabajo de manicura 2" },
+    { src: "/images/nail-3.jpg", alt: "Trabajo de manicura 3" },
+    { src: "/images/nail-4.jpg", alt: "Trabajo de manicura 4" },
+    { src: "/images/nail-5.jpg", alt: "Trabajo de manicura 5" },
+    { src: "/images/nail-6.jpg", alt: "Trabajo de manicura 6" },
+  ];
+  const modal = document.getElementById("gallery-modal");
+  const modalImg = document.getElementById("modal-image");
+
+  document.getElementById("gallery-grid")?.addEventListener("click", (e) => {
+    const button = e.target.closest("button[data-index]");
+    if (!button) return;
+    const index = button.getAttribute("data-index");
+    const img = images[index];
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+    modal.classList.remove("opacity-0", "pointer-events-none");
+    modal.classList.add("opacity-100");
+  });
+
+  document.getElementById("close-modal")?.addEventListener("click", () => {
+    modal.classList.add("opacity-0", "pointer-events-none");
+    modal.classList.remove("opacity-100");
+    modalImg.src = "";
+    modalImg.alt = "";
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      modal.classList.add("opacity-0", "pointer-events-none");
+      modal.classList.remove("opacity-100");
+      modalImg.src = "";
+    }
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("opacity-0", "pointer-events-none");
+      modal.classList.remove("opacity-100");
+      modalImg.src = "";
+    }
+  });
+</script>

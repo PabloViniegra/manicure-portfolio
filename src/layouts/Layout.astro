@@ -1,0 +1,32 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manicura Profesional</title>
+    <meta
+      name="description"
+      content="Portfolio profesional de manicura y nail art."
+    />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <div id="cursor-glow"></div>
+  <body>
+    <slot />
+    <script src="/src/scripts/gsap-animations.js" type="module"></script>
+  </body>
+  <script is:inline>
+    const cursor = document.getElementById("cursor-glow");
+
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.top = `${e.clientY}px`;
+      cursor.style.left = `${e.clientX}px`;
+    });
+    let angle = 0;
+    setInterval(() => {
+      angle += 2;
+      cursor.style.background = `conic-gradient(from ${angle}deg, #f0f, #0ff, #f0f)`;
+    }, 50);
+  </script>
+
+
+</html>

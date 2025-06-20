@@ -1,0 +1,22 @@
+{
+  "name": "manicure-portfolio",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@fontsource-variable/dm-sans": "^5.2.6",
+    "@fontsource/fredoka-one": "^5.2.5",
+    "@fontsource/kaushan-script": "^5.2.6",
+    "@fontsource/lato": "^5.2.6",
+    "@fontsource/ubuntu-mono": "^5.2.6",
+    "@tailwindcss/vite": "^4.1.10",
+    "astro": "^5.10.0",
+    "gsap": "^3.13.0",
+    "tailwindcss": "^4.1.10"
+  }
+}

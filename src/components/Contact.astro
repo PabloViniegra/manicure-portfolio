@@ -1,0 +1,49 @@
+<section
+  class="contact-section relative py-20 px-6 bg-gradient-to-br from-[#fbe4e9] via-[#f5d0fe] to-[#fffaf0] text-dark fade-in overflow-hidden"
+>
+  <!-- Fondo decorativo animado opcional -->
+  <div
+    class="absolute -top-10 -left-10 w-96 h-96 bg-pink-300 opacity-20 blur-3xl rounded-full animate-pulse-slow z-0"
+  >
+  </div>
+  <div
+    class="absolute -bottom-10 -right-10 w-96 h-96 bg-fuchsia-300 opacity-20 blur-3xl rounded-full animate-pulse-slow z-0"
+  >
+  </div>
+
+  <div class="relative z-10 max-w-2xl mx-auto text-center">
+    <h2 class="text-4xl font-bold font-display mb-4">Contáctame</h2>
+    <p class="text-lg text-dark/80 mb-10">
+      ¿Tienes una consulta o quieres reservar una cita? Rellena el formulario y
+      te responderé lo antes posible.
+    </p>
+
+    <form class="space-y-6 text-left">
+      <input
+        type="text"
+        placeholder="Tu nombre"
+        class="w-full px-5 py-3 rounded-2xl bg-white text-dark placeholder-gray-500 shadow focus:outline-none focus:ring-2 focus:ring-pink-400 transition"
+        required
+      />
+      <input
+        type="email"
+        placeholder="Tu email"
+        class="w-full px-5 py-3 rounded-2xl bg-white text-dark placeholder-gray-500 shadow focus:outline-none focus:ring-2 focus:ring-pink-400 transition"
+        required
+      />
+      <textarea
+        placeholder="Escribe tu mensaje..."
+        class="w-full px-5 py-3 rounded-2xl bg-white text-dark placeholder-gray-500 shadow focus:outline-none focus:ring-2 focus:ring-pink-400 transition resize-none"
+        rows="5"
+        required></textarea>
+      <div class="text-center">
+        <button
+          type="submit"
+          class="bg-fuchsia-500 text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-fuchsia-400 hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-fuchsia-400"
+        >
+          Enviar mensaje
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
