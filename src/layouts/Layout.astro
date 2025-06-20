@@ -1,3 +1,7 @@
+---
+import "../styles/global.css";
+---
+
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -7,10 +11,9 @@
       name="description"
       content="Portfolio profesional de manicura y nail art."
     />
-    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
-  <div id="cursor-glow"></div>
   <body>
+    <div id="cursor-glow"></div>
     <slot />
     <script src="/src/scripts/gsap-animations.js" type="module"></script>
   </body>
@@ -27,6 +30,4 @@
       cursor.style.background = `conic-gradient(from ${angle}deg, #f0f, #0ff, #f0f)`;
     }, 50);
   </script>
-
-
 </html>
