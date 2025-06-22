@@ -1,22 +1,24 @@
 <footer
-  class="relative bg-gradient-to-br from-pink-100 via-fuchsia-100 to-rose-200 text-dark py-12 px-6 overflow-hidden shadow-inner"
+  class="footer-astro relative bg-gradient-to-br from-pink-100 via-fuchsia-100 to-rose-200 text-dark py-12 px-6 overflow-hidden shadow-inner"
 >
   <div
-    class="absolute -top-10 -left-10 w-72 h-72 bg-pink-300/20 rounded-full blur-3xl animate-pulse-slow pointer-events-none"
+    class="footer-bubble absolute -top-10 -left-10 w-72 h-72 bg-pink-300/20 rounded-full blur-3xl animate-pulse-slow pointer-events-none"
   >
   </div>
   <div
-    class="absolute -bottom-10 -right-10 w-72 h-72 bg-fuchsia-300/20 rounded-full blur-3xl animate-pulse-slow pointer-events-none"
+    class="footer-bubble absolute -bottom-10 -right-10 w-72 h-72 bg-fuchsia-300/20 rounded-full blur-3xl animate-pulse-slow pointer-events-none"
   >
   </div>
-  <div class="relative z-10 max-w-5xl mx-auto text-center">
-    <h2 class="text-3xl font-display font-bold mb-4 text-pink-600 drop-shadow">
+  <div class="footer-content relative z-10 max-w-5xl mx-auto text-center">
+    <h2
+      class="footer-title text-3xl font-display font-bold mb-4 text-pink-600 drop-shadow"
+    >
       Stiletto Nailz
     </h2>
-    <p class="text-md max-w-xl mx-auto opacity-80 mb-6">
+    <p class="footer-desc text-md max-w-xl mx-auto opacity-80 mb-6">
       Gracias por visitar. Sígueme en redes para ver más trabajos y novedades.
     </p>
-    <div class="flex justify-center gap-6 mb-8">
+    <div class="footer-links flex justify-center gap-6 mb-8">
       <a
         href="https://instagram.com/stiletto.nailz"
         target="_blank"
@@ -41,7 +43,7 @@
         </svg>
       </a>
     </div>
-    <p class="text-sm text-dark/70">
+    <p class="footer-copy text-sm text-dark/70">
       © {new Date().getFullYear()} Stiletto Nailz · Todos los derechos reservados
     </p>
   </div>
