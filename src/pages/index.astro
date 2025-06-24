@@ -152,21 +152,6 @@ import Footer from "../components/Footer.astro";
       });
     });
 
-    const about = document.querySelector(".about-section");
-    if (about) {
-      gsap.from(about.querySelector(".about-text"), {
-        opacity: 0,
-        x: -80,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: about,
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-      });
-    }
-
     gsap.utils.toArray(".service-card").forEach((card, i) => {
       gsap.from(card, {
         opacity: 0,
@@ -195,21 +180,6 @@ import Footer from "../components/Footer.astro";
         },
       });
     });
-
-    const form = document.querySelector("form");
-    if (form) {
-      gsap.from(form, {
-        opacity: 0,
-        filter: "blur(10px)",
-        y: 50,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: form,
-          start: "top 85%",
-        },
-      });
-    }
 
     const footer = document.querySelector(".footer-astro");
     if (footer) {

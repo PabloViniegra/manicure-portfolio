@@ -3,21 +3,17 @@ import { useState, useEffect, useRef } from "react";
 export default function ContactForm() {
   const [status, setStatus] = useState("");
   const [sending, setSending] = useState(false);
-  const [hasHydrated, setHasHydrated] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const formRef = useRef();
 
   useEffect(() => {
-    setHasHydrated(true);
-  }, []);
-
-  useEffect(() => {
-    if (!hasHydrated) return;
     let ctx;
     import("gsap").then((gsapModule) => {
       const gsap = gsapModule.default;
       import("gsap/ScrollTrigger").then((pluginModule) => {
         gsap.registerPlugin(pluginModule.ScrollTrigger);
         if (formRef.current) {
+          formRef.current.classList.remove("form-gsap-init");
           ctx = gsap.context(() => {
             gsap.from(formRef.current, {
               opacity: 0,
@@ -35,8 +31,17 @@ export default function ContactForm() {
         }
       });
     });
+
     return () => ctx && ctx.revert();
-  }, [hasHydrated]);
+  }, []);
+
+  useEffect(() => {
+    if (status) {
+      setShowToast(true);
+      const timer = setTimeout(() => setShowToast(false), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -73,52 +78,53 @@ export default function ContactForm() {
   }
 
   return (
-    <form
-      className="space-y-6 text-left"
-      onSubmit={handleSubmit}
-      autoComplete="off"
-      ref={formRef}
-    >
-      <input
-        type="text"
-        name="name"
-        placeholder="Tu nombre"
-        className="w-full px-5 py-3 rounded-2xl bg-white text-dark placeholder-gray-500 shadow focus:outline-none focus:ring-2 focus:ring-pink-400 transition"
-        required
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Tu email"
-        className="w-full px-5 py-3 rounded-2xl bg-white text-dark placeholder-gray-500 shadow focus:outline-none focus:ring-2 focus:ring-pink-400 transition"
-        required
-      />
-      <textarea
-        name="message"
-        placeholder="Escribe tu mensaje..."
-        className="w-full px-5 py-3 rounded-2xl bg-white text-dark placeholder-gray-500 shadow focus:outline-none focus:ring-2 focus:ring-pink-400 transition resize-none"
-        rows={5}
-        required
-      />
-      <div className="text-center">
-        <button
-          type="submit"
-          disabled={sending}
-          className="bg-fuchsia-500 text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-fuchsia-400 hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-fuchsia-400"
+    <>
+      <form
+        className="space-y-6 text-left form-gsap-init"
+        onSubmit={handleSubmit}
+        autoComplete="off"
+        ref={formRef}
+      >
+        <input
+          type="text"
+          name="name"
+          placeholder="Tu nombre"
+          className="w-full px-5 py-3 rounded-2xl bg-white text-dark placeholder-gray-500 shadow focus:outline-none focus:ring-2 focus:ring-pink-400 transition"
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Tu email"
+          className="w-full px-5 py-3 rounded-2xl bg-white text-dark placeholder-gray-500 shadow focus:outline-none focus:ring-2 focus:ring-pink-400 transition"
+          required
+        />
+        <textarea
+          name="message"
+          placeholder="Escribe tu mensaje..."
+          className="w-full px-5 py-3 rounded-2xl bg-white text-dark placeholder-gray-500 shadow focus:outline-none focus:ring-2 focus:ring-pink-400 transition resize-none"
+          rows={5}
+          required
+        />
+        <div className="text-center">
+          <button
+            type="submit"
+            disabled={sending}
+            className="bg-fuchsia-500 text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-fuchsia-400 hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-fuchsia-400"
+          >
+            {sending ? "Enviando..." : "Enviar mensaje"}
+          </button>
+        </div>
+      </form>
+      {showToast && (
+        <div
+          className={`fixed left-1/2 -translate-x-1/2 bottom-8 z-50 flex items-center gap-3 px-6 py-4 rounded-2xl shadow-lg text-white font-semibold text-lg animate-fade-in-up transition-all duration-300
+            ${status.startsWith("¡Mensaje") ? "bg-green-500" : "bg-red-500"}`}
+          style={{ minWidth: 280, maxWidth: 400 }}
         >
-          {sending ? "Enviando..." : "Enviar mensaje"}
-        </button>
-      </div>
-      {status && (
-        <p
-          className={`flex items-center font-sans justify-center gap-2 text-center mt-3 ${
-            status.startsWith("¡Mensaje") ? "text-green-600" : "text-red-500"
-          }`}
-        >
-          {status.startsWith("¡Mensaje") && (
+          {status.startsWith("¡Mensaje") ? (
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6 text-green-500 shrink-0"
+              className="w-7 h-7 text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -130,10 +136,24 @@ export default function ContactForm() {
                 d="M5 13l4 4L19 7"
               />
             </svg>
+          ) : (
+            <svg
+              className="w-7 h-7 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
           )}
-          {status}
-        </p>
+          <span>{status}</span>
+        </div>
       )}
-    </form>
+    </>
   );
 }
