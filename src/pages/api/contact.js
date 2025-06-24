@@ -2,12 +2,24 @@ export const prerender = false;
 
 import admin from "firebase-admin";
 import nodemailer from "nodemailer";
-import serviceAccount from "../../../service-account.json";
+
+const serviceAccount = {
+  type: import.meta.env.FIREBASE_TYPE,
+  project_id: import.meta.env.FIREBASE_PROJECT_ID,
+  private_key_id: import.meta.env.FIREBASE_PRIVATE_KEY_ID,
+  private_key: import.meta.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+  client_email: import.meta.env.FIREBASE_CLIENT_EMAIL,
+  client_id: import.meta.env.FIREBASE_CLIENT_ID,
+  auth_uri: import.meta.env.FIREBASE_AUTH_URI,
+  token_uri: import.meta.env.FIREBASE_TOKEN_URI,
+  auth_provider_x509_cert_url: import.meta.env.FIREBASE_AUTH_PROVIDER,
+  client_x509_cert_url: import.meta.env.FIREBASE_CLIENT_CERT_URL,
+};
 
 if (!globalThis._firebaseInitialized) {
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    projectId: import.meta.env.FIREBASE_PROJECT_ID,
   });
   globalThis._firebaseInitialized = true;
 }
