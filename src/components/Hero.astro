@@ -3,14 +3,24 @@ const title = "Stiletto Nailz";
 ---
 
 <section
-  class="hero-section relative min-h-screen bg-gradient-to-br from-primary via-pink-500 to-fuchsia-600 text-white flex flex-col justify-center items-center text-center px-4 overflow-hidden"
+  class="hero-section relative min-h-screen text-gray-800 flex flex-col justify-center items-center text-center px-4 overflow-hidden"
+  style="
+    background: linear-gradient(
+      145deg,
+      rgba(255, 245, 248, 0.98) 0%,
+      rgba(255, 240, 247, 0.96) 30%,
+      rgba(255, 235, 245, 0.94) 50%,
+      rgba(250, 230, 250, 0.92) 70%,
+      rgba(245, 225, 245, 0.9) 100%
+    );
+  "
 >
   <div class="absolute top-6 right-6 flex gap-4 z-30">
     <a
       href="https://instagram.com/stiletto.nailz"
       target="_blank"
       rel="noopener noreferrer"
-      class="text-white/80 hover:text-white transition-transform hover:scale-110"
+      class="text-pink-600/80 hover:text-pink-700 transition-transform hover:scale-110"
       aria-label="Instagram Stiletto Nailz"
     >
       <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
@@ -21,7 +31,7 @@ const title = "Stiletto Nailz";
     </a>
     <a
       href="mailto:nereaeffy@gmail.com"
-      class="text-white/80 hover:text-white transition-transform hover:scale-110"
+      class="text-pink-600/80 hover:text-pink-700 transition-transform hover:scale-110"
       aria-label="Email Stiletto Nailz"
     >
       <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
@@ -33,21 +43,33 @@ const title = "Stiletto Nailz";
   </div>
 
   <div class="hero-logo-wrapper relative inline-block">
-    <img
-      src="/images/logo.png"
-      alt="Logo Stiletto Nailz"
-      class="hero-logo w-56 md:w-72 lg:w-[22rem] mb-6 opacity-0 scale-90 transition-all duration-700 drop-shadow-[0_8px_25px_rgba(255,192,203,0.35)] glam-glow relative z-30"
-    />
+    <div class="relative">
+      <img
+        src="/images/logo.png"
+        alt="Logo Stiletto Nailz"
+        class="hero-logo w-56 md:w-72 lg:w-[22rem] mb-6 opacity-0 scale-90 transition-all duration-1000 ease-out drop-shadow-[0_8px_25px_rgba(236,72,153,0.15)] relative z-30 hover:scale-[1.02] hover:drop-shadow-[0_10px_30px_rgba(236,72,153,0.25)]"
+        style="animation: float 6s ease-in-out infinite"
+      />
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-0 bg-pink-300/20 rounded-full blur-2xl animate-pulse" style="animation-duration: 4s"></div>
+        <div class="absolute inset-0 bg-fuchsia-300/20 rounded-full blur-2xl animate-pulse" style="animation-delay: 1s; animation-duration: 5s"></div>
+      </div>
+    </div>
 
     <span class="sparkle-container absolute inset-0 z-0"></span>
   </div>
 
-  <p
-    class="hero-subtitle text-xl md:text-2xl max-w-xl mb-8 opacity-90 font-sans tracking-tight"
-  >
-    Descubre diseños únicos y elegantes para tus uñas. Tu estilo empieza en tus
-    manos.
-  </p>
+  <div class="relative flex flex-col items-center mb-8 px-4">
+    <p
+      class="hero-subtitle max-w-2xl text-2xl md:text-3xl lg:text-4xl font-display font-medium text-pink-700 text-center leading-tight tracking-wide"
+      style="text-shadow: 0 2px 8px rgba(236, 72, 153, 0.1)"
+    >
+      <span class="block">Convirtiendo tus uñas de fantasía en realidad.</span>
+    </p>
+    <span
+      class="block mt-6 w-48 h-1 rounded-full bg-gradient-to-r from-pink-300 via-fuchsia-400 to-purple-300 opacity-70"
+    ></span>
+  </div>
 
   <a
     href="#gallery"

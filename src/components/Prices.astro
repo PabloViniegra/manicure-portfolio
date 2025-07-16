@@ -1,0 +1,177 @@
+---
+// Componente de precios moderno y elegante para Stiletto Nailz
+---
+
+<section
+  class="w-full py-20 bg-gradient-to-br from-pink-50 via-white to-fuchsia-100 fade-in overflow-hidden relative"
+  id="prices"
+>
+  <div class="container mx-auto px-4 md:px-10">
+    <div class="text-center mb-16">
+      <h2
+        class="text-4xl md:text-5xl font-extrabold font-display text-primary mb-3 relative inline-block after:content-[''] after:block after:w-1/2 after:h-1 after:bg-pink-400 after:mx-auto after:rounded-full after:mt-3"
+      >
+        Precios
+      </h2>
+      <p class="text-lg text-accent font-sans font-medium tracking-wide mt-2">
+        By Stiletto Nailz
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div
+        class="bg-white/90 rounded-2xl shadow-xl p-8 border border-pink-100 backdrop-blur-xl transition-all duration-300 hover:shadow-2xl hover:border-fuchsia-200"
+        id="prices-manicura"
+      >
+        <h3 class="text-2xl font-cursive font-semibold mb-6 text-pink-600">
+          Manicura
+        </h3>
+        <ul class="price-list divide-y divide-pink-50">
+          <li class="flex justify-between py-2 items-start">
+            <span>Retirada con torno + dar forma</span><span
+              class="price font-bold text-pink-400">5€</span>
+          </li>
+          <li class="flex justify-between py-2 items-start">
+            <span
+              >Limpieza cutículas sin esmaltado <br /><small
+                class="text-xs text-accent">(Manicura rusa combinada)</small
+              ></span
+            ><span class="price font-bold text-pink-400">5€</span>
+          </li>
+          <li class="flex justify-between py-2 items-start">
+            <span>Semipermanente un color</span><span
+              class="price font-bold text-pink-400">8€</span>
+          </li>
+          <li class="flex justify-between py-2 items-start">
+            <span>Nivelación con rubber + esmaltado</span><span
+              class="price font-bold text-pink-400">10€</span>
+          </li>
+        </ul>
+      </div>
+      <div
+        class="bg-white/90 rounded-2xl shadow-xl p-8 border border-pink-100 backdrop-blur-xl transition-all duration-300 hover:shadow-2xl hover:border-fuchsia-200"
+        id="prices-acrygel"
+      >
+        <h3 class="text-2xl font-cursive font-semibold mb-6 text-pink-600">
+          Uñas Acrygel
+        </h3>
+        <ul class="price-list divide-y divide-pink-50">
+          <li class="flex justify-between py-2 items-start">
+            <span>Primera puesta S/M (1 y 2)</span><span
+              class="price font-bold text-pink-400">15€</span>
+          </li>
+          <li class="flex justify-between py-2 items-start">
+            <span>Primera puesta L/XL (3 - 6)</span><span
+              class="price font-bold text-pink-400">20€</span>
+          </li>
+          <li class="flex justify-between py-2 items-start">
+            <span>Primera puesta XXL <br /><small
+                class="text-xs text-accent">(Estos servicios llevan incluidos el color)</small
+              ></span><span class="price font-bold text-pink-400">25€</span>
+          </li>
+          <li class="flex justify-between py-2 items-start">
+            <span>Babyboomer u ombré de colores</span><span
+              class="price font-bold text-pink-400">16€</span>
+          </li>
+          <li class="flex justify-between py-2 items-start">
+            <span>Encapsulados</span><span class="price font-bold text-pink-400"
+              >18€</span>
+          </li>
+        </ul>
+      </div>
+      <div
+        class="bg-white/90 rounded-2xl shadow-xl p-8 border border-pink-100 backdrop-blur-xl transition-all duration-300 hover:shadow-2xl hover:border-fuchsia-200"
+        id="prices-nailart"
+      >
+        <h3 class="text-2xl font-cursive font-semibold mb-6 text-pink-600">
+          Nail Art
+        </h3>
+        <ul class="price-list divide-y divide-pink-50">
+          <li class="flex justify-between py-2 items-start">
+            <span>Francesa</span><span class="price font-bold text-pink-400"
+              >1€ por uña</span>
+          </li>
+          <li class="flex justify-between py-2 items-start">
+            <span>Decoración sencilla (cosas minimalistas)</span><span
+              class="price font-bold text-pink-400">3€ por mano</span>
+          </li>
+          <li class="flex justify-between py-2 items-start">
+            <span>Decoración elaborada</span><span
+              class="price font-bold text-pink-400">5€ por mano</span>
+          </li>
+          <li class="flex justify-between py-2 items-start">
+            <span>Pedrería</span><span class="price font-bold text-pink-400"
+              >3€ por mano</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="prices-contact text-center mt-12 text-accent font-medium"></div>
+  </div>
+</section>
+
+<style>
+  #prices {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .price-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .price-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.05);
+    color: var(--color-dark);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .price-list li:last-child {
+    border-bottom: none;
+  }
+
+  .price {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    color: #f472b6;
+    margin-left: 1rem;
+    white-space: nowrap;
+  }
+
+  .price-list .note {
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    font-style: italic;
+    margin-top: 0.5rem;
+    font-family: var(--font-sans);
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+</style>

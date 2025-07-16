@@ -1,15 +1,36 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fredoka:wght@300..700&family=Kaushan+Script&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-@theme {
+:root {
   --color-primary: #e1bfbf;
   --color-accent: #b08484;
   --color-dark: #2d2d2d;
 
-  --font-sans-serif: "DM Sans Variable", sans-serif;
-  --font-sans: "Lato", sans-serif;
-  --font-display: "Fredoka One", system-ui;
-  --font-mono: "Ubuntu Mono", monospace;
-  --font-cursive: "Kaushan Script", cursive;
+  --font-sans: 'Lato', sans-serif;
+  --font-sans-serif: 'DM Sans', sans-serif;
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-mono: 'Ubuntu Mono', monospace;
+  --font-cursive: 'Kaushan Script', cursive;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+}
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-accent: var(--color-accent);
+  --color-dark: var(--color-dark);
+  --font-sans: var(--font-sans);
+  --font-sans-serif: var(--font-sans-serif);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+  --font-cursive: var(--font-cursive);
 }
 
 body {
@@ -69,6 +90,15 @@ body {
   }
   50% {
     background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.01);
   }
 }
 
